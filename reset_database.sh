@@ -5,6 +5,17 @@ echo "======================================================================"
 echo "  CMAP 1815: Resetting Database to Clean Starter State..."
 echo "======================================================================"
 
+echo ">>> Ensuring PostgreSQL 16 service is running..."
+sudo service postgresql start
+
+echo ">>> Waiting for PostgreSQL service to accept connections..."
+for i in {1..15}; do
+    if sudo -u postgres pg_isready -q; then
+        break
+    fi
+    sleep 1
+done
+
 echo ">>> Dropping existing tables and rebuilding schema..."
 if [ -f "datasets/setup_chap1.sql" ]; then
     psql -d cmap1815 -f datasets/setup_chap1.sql

@@ -1,12 +1,11 @@
 {
   "name": "CMAP 1815: Modern SQL Student Sandbox",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
 
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers-contrib/features/postgresql:2": {
-      "version": "16"
-    }
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
 
   "customizations": {
@@ -43,5 +42,6 @@
     "DATABASE_URL": "postgresql://vscode@localhost:5432/cmap1815"
   },
 
-  "postCreateCommand": "bash .devcontainer/setup_database.sh"
+  "postCreateCommand": "bash .devcontainer/setup_database.sh",
+  "postStartCommand": "sudo service postgresql start"
 }

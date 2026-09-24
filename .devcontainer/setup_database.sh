@@ -7,6 +7,14 @@ git config --global --add safe.directory '*'
 echo ">>> Starting PostgreSQL 16 service..."
 sudo service postgresql start
 
+echo ">>> Waiting for PostgreSQL service to accept connections..."
+for i in {1..30}; do
+    if sudo -u postgres pg_isready -q; then
+        break
+    fi
+    sleep 1
+done
+
 echo ">>> Initializing database role and sandbox..."
 sudo -u postgres psql -tc "SELECT 1 FROM pg_roles WHERE rolname = 'vscode'" | grep -q 1 || sudo -u postgres createuser -s vscode
 sudo -u postgres psql -tc "SELECT 1 FROM pg_database WHERE datname = 'cmap1815'" | grep -q 1 || sudo -u postgres createdb -O vscode cmap1815
