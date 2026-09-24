@@ -1,11 +1,12 @@
 {
   "name": "CMAP 1815: Modern SQL Student Sandbox",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "workspace",
+  "workspaceFolder": "/workspaces/CMAP-1815-Student-Sandbox",
 
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/postgresql-client:1": {}
   },
 
   "customizations": {
@@ -21,14 +22,16 @@
             "server": "localhost",
             "port": 5432,
             "database": "cmap1815",
-            "username": "vscode",
+            "username": "postgres",
+            "password": "password123",
             "askForPassword": false
           }
         ]
       },
       "extensions": [
         "mtxr.sqltools",
-        "mtxr.sqltools-driver-pg"
+        "mtxr.sqltools-driver-pg",
+        "cweijan.vscode-database-client2"
       ]
     }
   },
@@ -36,13 +39,15 @@
   "remoteUser": "vscode",
 
   "containerEnv": {
-    "PGUSER": "vscode",
+    "PGUSER": "postgres",
+    "PGPASSWORD": "password123",
     "PGDATABASE": "cmap1815",
     "PGHOST": "localhost",
     "PGPORT": "5432",
-    "DATABASE_URL": "postgresql://vscode@localhost:5432/cmap1815"
+    "DATABASE_URL": "postgresql://postgres:password123@localhost:5432/cmap1815"
   },
 
-  "postCreateCommand": "bash .devcontainer/setup_database.sh",
-  "postStartCommand": "sudo service postgresql start"
+  "forwardPorts": [5432],
+
+  "postCreateCommand": "bash .devcontainer/setup_database.sh"
 }

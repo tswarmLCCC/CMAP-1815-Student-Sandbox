@@ -9,7 +9,8 @@
       "server": "localhost",
       "port": 5432,
       "database": "cmap1815",
-      "username": "vscode",
+      "username": "postgres",
+      "password": "password123",
       "askForPassword": false
     }
   ]
