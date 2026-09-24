@@ -1,0 +1,15 @@
+{
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "sqltools.useNodeRuntime": true,
+  "sqltools.connections": [
+    {
+      "name": "CMAP 1815 Local PostgreSQL",
+      "driver": "PostgreSQL",
+      "server": "localhost",
+      "port": 5432,
+      "database": "cmap1815",
+      "username": "vscode",
+      "askForPassword": false
+    }
+  ]
+}
