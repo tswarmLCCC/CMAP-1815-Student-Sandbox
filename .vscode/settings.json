@@ -1,6 +1,7 @@
 {
   "terminal.integrated.defaultProfile.linux": "bash",
-  "sqltools.useNodeRuntime": true,
+  "sqltools.useNodeRuntime": false,
+  "sqltools.detectNodeRuntime": false,
   "sqltools.connections": [
     {
       "name": "CMAP 1815 Local PostgreSQL",
