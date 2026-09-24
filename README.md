@@ -36,6 +36,15 @@ Click the button below to launch your personal, cloud-hosted SQL development env
 
 ---
 
+## 🔄 Disaster Recovery: Screwed up your data?
+If you make a destructive mistake during DML (Unit 5) or Schema Design (Unit 7) experiments (like accidentally deleting records or dropping a table), you can restore your database to pristine condition anytime:
+```bash
+./reset_database.sh
+```
+*Note: This re-runs the initial seed script. It does NOT touch or delete your `.sql` lab query files in `units/`.*
+
+---
+
 ## 📁 Repository Structure
 
 ```
@@ -43,6 +52,7 @@ Click the button below to launch your personal, cloud-hosted SQL development env
 ├── .devcontainer/             # Automated PostgreSQL 16 server configuration
 ├── .vscode/                   # Pre-configured SQLTools database connection
 ├── datasets/                  # Core seed scripts (setup_chap1.sql)
+├── reset_database.sh          # 1-click database recovery script
 └── units/                     # Weekly Guided Learning & Lab Challenges
     ├── unit_01_selection_and_fundamentals/
     ├── unit_02_filtering_and_logic/
