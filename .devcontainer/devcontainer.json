@@ -2,8 +2,8 @@
   "name": "CMAP 1815: Modern SQL Student Sandbox",
   "dockerComposeFile": "docker-compose.yml",
   "service": "workspace",
-  "workspaceFolder": "/workspaces/CMAP-1815-Student-Sandbox",
-
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  
   "onCreateCommand": "sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client",
 
   "customizations": {
